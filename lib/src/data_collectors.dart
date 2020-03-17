@@ -1,0 +1,30 @@
+class DataCollector {
+  static const APPS_LIST = 0;
+  static const APPS_USAGE = 1;
+  static const BATTERY = 2;
+  static const BROWSER = 3;
+  static const CALENDAR_EVENTS = 4;
+  static const CPU_PROCESS = 6;
+  static const DICTIONARY = 7;
+  static const GEOLOCATION = 8;
+  static const HEADSET_PLUG = 9;
+  static const MEDIA_FILES = 10;
+  static const MEMORY_USEAGE = 11;
+  static const NETWORK_CONNECTION = 13;
+  static const NETWORK_USEAGE = 14;
+  static const PACKAGE_CHANGE = 15;
+  static const PHONE_INFO = 16;
+  static const ROAMING = 17;
+  static const SCREEN_ORIENTED = 18;
+  static const SIGNAL_STRENGTH = 19;
+  static const PROFILE_MODE = 20;
+  static const WIFI_DATA_CONNECTION = 21;
+  static const PERMISSION_COLLECTOR = 22;
+  static const NFC_COLLECTOR = 23;
+  static const BLUETOOTH_COLLECTOR = 24;
+  static const BLUETOOTH_DEVICES_COLLECTOR = 26;
+  static const MOVEMENT_COLLECTOR = 27;
+  static const FACEBOOK_NETWORK_COLLECTOR = 28;
+  static const ROOT_COLLECTOR = 29;
+  static const USB_COLLECTOR = 30;
+}

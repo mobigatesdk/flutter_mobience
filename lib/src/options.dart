@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
-
 import 'mobience_consts.dart';
 
-class MobienceSDK {
+class MobienceOptions {
   String apiKey;
   String appIdentifier;
   String appInstallationSource;
@@ -14,9 +12,8 @@ class MobienceSDK {
   String notificationText;
   bool iDsProfiles;
 
-  MobienceSDK(
-      {@required this.apiKey,
-      this.appIdentifier,
+  MobienceOptions(this.apiKey,
+  {this.appIdentifier,
       this.appInstallationSource,
       this.email,
       this.customUserAgent,
