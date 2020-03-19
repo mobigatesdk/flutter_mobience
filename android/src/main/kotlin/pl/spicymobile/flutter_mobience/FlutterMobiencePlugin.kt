@@ -3,7 +3,6 @@ package pl.spicymobile.flutter_mobience
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
@@ -22,32 +21,14 @@ import kotlin.concurrent.thread
 
 
 /** FlutterMobiencePlugin */
-public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
+class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
     private var applicationContext: Context? = null
     private var methodChannel: MethodChannel? = null
     private var mobienceSDK: SDK? = null
 
-
-    /* override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-         applicationContext = flutterPluginBinding.applicationContext
-         val channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_mobience")
-         channel.setMethodCallHandler(FlutterMobiencePlugin());
-     }*/
-
-    // This static function is optional and equivalent to onAttachedToEngine. It supports the old
-    // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
-    // plugin registration via this function while apps migrate to use the new Android APIs
-    // post-flutter-1.12 via https://flutter.dev/go/android-project-migration.
-    //
-    // It is encouraged to share logic between onAttachedToEngine and registerWith to keep
-    // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
-    // depending on the user's project. onAttachedToEngine or registerWith must both be defined
-    // in the same class.
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            /*val channel = MethodChannel(registrar.messenger(), "flutter_mobience")
-            channel.setMethodCallHandler(FlutterMobiencePlugin())*/
             val instance = FlutterMobiencePlugin()
             instance.onAttachedToEngine(registrar.context(), registrar.messenger())
         }
@@ -126,7 +107,7 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
                 if (mobienceSDK != null) {
                     result.success("success")
                 } else {
-                    result.error("Error", "init() exceptions, check logs for details", "");
+                    result.error("Error", "init() exceptions, check logs for details", "")
                 }
 
             }
@@ -153,12 +134,10 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
                 }
             }
             "disableAllDataCollector" -> {
-                Log.i("kamilll", "disabling all data colelctors")
                 mobienceSDK?.disableAllDataCollector()
             }
             "setEmail" -> {
                 val email = call.argument<String>("email") ?: ""
-                Log.i("kamilll", "setting email to $email")
                 mobienceSDK?.setEmail(email)
             }
             "getEmail" -> {
@@ -171,7 +150,6 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
             }
             "setFbToken" -> {
                 val token = call.argument<String>("fbtoken")
-                Log.i("kamilll", "setting fb token to $token")
                 mobienceSDK?.setFbToken(token)
             }
             "getSDKInfo" -> {
@@ -205,8 +183,6 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
                     mobienceSDK.let {
                         if (it != null) {
                             val adOceanTargeting = it.adOceanTargeting.toMap()
-                            Log.i("kamilll", "adocean target: ${it}")
-
                             Handler(Looper.getMainLooper()).post {
                                 result.success(adOceanTargeting)
                             }
@@ -240,8 +216,7 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
                                 }
                             }
                         }
-                        MobienceSDK.get().trackEvent(builder.build());
-                      //  Log.i("kamilll", "this is category: ${builder.build().toString()}")
+                        MobienceSDK.get().trackEvent(builder.build())
                     } catch (ex: JSONException) {
                         ex.printStackTrace()
                     }
@@ -254,10 +229,10 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine(@NonNull binding: FlutterPluginBinding) {
         applicationContext = null
-        methodChannel?.setMethodCallHandler(null);
-        methodChannel = null;
+        methodChannel?.setMethodCallHandler(null)
+        methodChannel = null
     }
 
 }

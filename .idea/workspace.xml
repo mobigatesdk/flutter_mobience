@@ -6,16 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="29dcc2d7-3d8f-494d-a569-18a126fefa7c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/kotlin/pl/spicymobile/flutter_mobience/FlutterMobiencePlugin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/kotlin/pl/spicymobile/flutter_mobience/FlutterMobiencePlugin.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/category.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/category.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/data_collectors.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/data_collectors.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/mobience_consts.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/mobience_consts.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/options.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -47,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="17">
+              <caret line="1" column="50" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -57,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/lib/src/mobience.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+              <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -69,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/lib/src/mobience_consts.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -112,8 +104,8 @@
         <option value="$PROJECT_DIR$/lib/src/options.dart" />
         <option value="$PROJECT_DIR$/lib/src/mobience_consts.dart" />
         <option value="$PROJECT_DIR$/lib/src/data_collectors.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
       </list>
     </option>
   </component>
@@ -177,39 +169,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="flutter_mobience" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_mobience" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_mobience" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_mobience" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_mobience" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_mobience" type="462c0819:PsiDirectoryNode" />
-              <item name="android" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_mobience" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_mobience" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="flutter_mobience" type="b2602c69:ProjectViewProjectNode" />
-              <item name="flutter_mobience" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
@@ -287,12 +247,25 @@
       <option name="project" value="LOCAL" />
       <updated>1584603348146</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added readme, code format, added docs">
+      <created>1584624947815</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584624947815</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added better description">
+      <created>1584625122169</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1584625122169</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="183" y="4" width="1336" height="776" extended-state="0" />
-    <editor active="true" />
+    <frame x="-2" y="16" width="1336" height="776" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988067" visible="true" weight="0.27586207" />
       <window_info id="Captures" order="1" sideWeight="0.50119334" side_tool="true" weight="0.27586207" />
@@ -304,7 +277,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Dart Analysis" order="0" weight="0.32763976" />
-      <window_info anchor="bottom" id="Run" order="1" weight="0.77018636" />
+      <window_info anchor="bottom" id="Run" order="1" weight="0.3478261" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" x="410" y="214" width="404" height="276" id="Logcat" order="4" weight="0.2204969" />
@@ -312,8 +285,8 @@
       <window_info anchor="bottom" id="Terminal" order="6" weight="0.32919255" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Flutter Performance" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.32919255" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32763976" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32919255" />
+      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32763976" />
       <window_info anchor="bottom" id="Find" order="11" weight="0.33385092" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -327,7 +300,9 @@
     <MESSAGE value="initial" />
     <MESSAGE value="added most plugin methods" />
     <MESSAGE value="finished plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished plugin" />
+    <MESSAGE value="added readme, code format, added docs" />
+    <MESSAGE value="added better description" />
+    <option name="LAST_COMMIT_MESSAGE" value="added better description" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example/android/app/build.gradle">
@@ -429,7 +404,7 @@
     <entry file="file://$PROJECT_DIR$/lib/src/mobience_consts.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -453,7 +428,7 @@
     <entry file="file://$PROJECT_DIR$/lib/src/mobience.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
+          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
@@ -470,10 +445,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/android/local.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        <state relative-caret-position="17">
+          <caret line="1" column="50" selection-start-line="1" selection-start-column="50" selection-end-line="1" selection-end-column="50" />
         </state>
       </provider>
     </entry>
