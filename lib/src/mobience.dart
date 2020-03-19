@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
+import 'package:flutter_mobience/src/category.dart';
 import 'package:flutter_mobience/src/options.dart';
-
+import 'dart:convert';
 import 'mobience_consts.dart';
 
 class MobienceSDK {
@@ -26,78 +28,110 @@ class MobienceSDK {
   }
 
   Future<String> get init async {
-    final String initResult = await _channel.invokeMethod('init', {
-      "apiKey": options.apiKey,
-      "appIdentifier": options.appIdentifier,
-      "appInstallationSource": options.appInstallationSource,
-      // "email": options.email,
-      "customUserAgent": options.customUserAgent,
-      "cusUserId": options.cusUserId,
-      "userFields": options.userFields != null
-          ? _convertEnumListToStringList(options.userFields)
-          : null,
-      "monitorState":
-          options.monitorState != null ? options.monitorState.name : null,
-      "notificationText": options.notificationText,
-      "iDsProfiles": options.iDsProfiles
-    });
-
-    return initResult;
+    if (Platform.isAndroid) {
+      final String initResult = await _channel.invokeMethod('init', {
+        "apiKey": options.apiKey,
+        "appIdentifier": options.appIdentifier,
+        "appInstallationSource": options.appInstallationSource,
+        "email": options.email,
+        "customUserAgent": options.customUserAgent,
+        "cusUserId": options.cusUserId,
+        "userFields": options.userFields != null
+            ? _convertEnumListToStringList(options.userFields)
+            : null,
+        "monitorState":
+            options.monitorState != null ? options.monitorState.name : null,
+        "notificationText": options.notificationText,
+        "iDsProfiles": options.iDsProfiles
+      });
+      return initResult;
+    } else {
+      return 'success';
+    }
   }
 
   Future<String> get startSdk async {
-    final String startResult = await _channel.invokeMethod('startsdk');
-    return startResult;
+    if (Platform.isAndroid) {
+      final String startResult = await _channel.invokeMethod('startsdk');
+      return startResult;
+    } else
+      return 'success';
   }
 
   void setCollectAll() {
-    _channel.invokeMethod('setCollectAll');
+    if (Platform.isAndroid) _channel.invokeMethod('setCollectAll');
   }
 
   void configureDataCollectors(bool enable, List<int> collectors) {
-    _channel.invokeMethod('configureDataCollectors',
-        {"enable": enable, "collectors": collectors});
+    if (Platform.isAndroid)
+      _channel.invokeMethod('configureDataCollectors',
+          {"enable": enable, "collectors": collectors});
   }
 
   void disableAllDataCollector() {
-    _channel.invokeMethod('disableAllDataCollector');
+    if (Platform.isAndroid) _channel.invokeMethod('disableAllDataCollector');
   }
 
   void setEmail(String email) {
-    _channel.invokeMethod('setEmail', {"email": email});
+    if (Platform.isAndroid) _channel.invokeMethod('setEmail', {"email": email});
   }
 
   Future<String> getEmail() async {
-    final String email = await _channel.invokeMethod('getEmail');
-    return email;
+    if (Platform.isAndroid) {
+      final String email = await _channel.invokeMethod('getEmail');
+      return email;
+    } else
+      return '';
   }
 
   void setFbToken(String token) {
-    _channel.invokeMethod('setFbToken', {"fbtoken": token});
+    if (Platform.isAndroid)
+      _channel.invokeMethod('setFbToken', {"fbtoken": token});
   }
 
   Future<String> getSDKInfo() async {
-    final String sdkInfo = await _channel.invokeMethod('getSDKInfo');
-    return sdkInfo;
+    if (Platform.isAndroid) {
+      final String sdkInfo = await _channel.invokeMethod('getSDKInfo');
+      return sdkInfo;
+    } else
+      return '';
   }
 
   Future<String> getSDKUniqueIdentifier() async {
-    final String sdkUniqueIdentifier =
-        await _channel.invokeMethod('getSDKUniqueIdentifier');
-    return sdkUniqueIdentifier;
+    if (Platform.isAndroid) {
+      final String sdkUniqueIdentifier =
+          await _channel.invokeMethod('getSDKUniqueIdentifier');
+      return sdkUniqueIdentifier;
+    } else
+      return '';
   }
 
   Future<List<int>> getIDsProfiles() async {
-    var ints =
-        new List<int>.from(await _channel.invokeMethod('getIDsProfiles'));
-    return ints;
+    if (Platform.isAndroid) {
+      var ints =
+          new List<int>.from(await _channel.invokeMethod('getIDsProfiles'));
+      return ints;
+    } else
+      return [];
   }
 
-   Future<Map<String,int>> getAdOceanTargeting() async {
-    var maps = new Map<String,int>.from(await _channel.invokeMethod('getAdOceanTargeting'));
+  Future<Map<String, int>> getAdOceanTargeting() async {
+    if (Platform.isAndroid) {
+      var maps = new Map<String, int>.from(
+          await _channel.invokeMethod('getAdOceanTargeting'));
+      return maps;
+    } else
+      return {};
+  }
 
-   // print(maps.toString());
-    return maps;
+  void trackAppInstall(int timestamp) {
+    if (Platform.isAndroid)
+      _channel.invokeMethod('trackAppInstall', {"timestamp": timestamp});
+  }
+
+  void trackEvent(Category category) {
+    if (Platform.isAndroid)
+      _channel.invokeMethod('trackEvent', {"event": jsonEncode(category)});
   }
 
   List<String> _convertEnumListToStringList(List list) {

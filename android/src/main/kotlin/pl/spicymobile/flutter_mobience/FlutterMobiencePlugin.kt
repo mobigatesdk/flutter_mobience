@@ -13,8 +13,11 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import org.json.JSONException
+import org.json.JSONObject
+import pl.spicymobile.mobience.sdk.Category
 import pl.spicymobile.mobience.sdk.MobienceSDK
-import pl.spicymobile.mobience.sdk.SDK;
+import pl.spicymobile.mobience.sdk.SDK
 import kotlin.concurrent.thread
 
 
@@ -188,37 +191,61 @@ public class FlutterMobiencePlugin : FlutterPlugin, MethodCallHandler {
                 }
             }
             "getIDsProfiles" -> {
-                 mobienceSDK.let {
+                mobienceSDK.let {
                     if (it != null) {
                         val idsProfiles = it.getIDsProfiles()?.toList() ?: listOf()
                         result.success(idsProfiles)
-                    }else
+                    } else
                         result.error("Error", "getIDsProfiles() library first!", "")
                 }
             }
             "getAdOceanTargeting" -> {
                 thread(start = true) {
 
-                      mobienceSDK.let {
-                          if (it != null) {
-                              val adOceanTargeting =it.adOceanTargeting.toMap()
-                                      Log.i("kamilll", "adocean target: ${it}")
+                    mobienceSDK.let {
+                        if (it != null) {
+                            val adOceanTargeting = it.adOceanTargeting.toMap()
+                            Log.i("kamilll", "adocean target: ${it}")
 
-                              Handler(Looper.getMainLooper()).post {
-                                  result.success(adOceanTargeting)
-                              }
-                          }else
-                              result.error("Error", "getAdOceanTargeting() library first!", "")
-                      }
+                            Handler(Looper.getMainLooper()).post {
+                                result.success(adOceanTargeting)
+                            }
+                        } else
+                            result.error("Error", "getAdOceanTargeting() library first!", "")
+                    }
                 }
 
             }
             "trackAppInstall" -> {
                 val timestamp = call.argument<Long>("timestamp") ?: 0
-                mobienceSDK?.trackAppInstall(timestamp)
+                MobienceSDK.get().trackAppInstall(timestamp)
             }
             "trackEvent" -> {
+                val categoryJson = call.argument<String>("event")
+                categoryJson?.let { jsonString ->
 
+
+                    try {
+                        val options = JSONObject(jsonString)
+                        val categoryName = options.getString("category")
+                        val builder = Category.Builder(categoryName)
+                        val parameters = options.optJSONArray("parameters")
+                        if (parameters != null) {
+                            for (i in 0 until parameters.length()) {
+                                val item = parameters.getJSONObject(i)
+                                val parametersIterator = item.keys()
+                                while (parametersIterator.hasNext()) {
+                                    val key = parametersIterator.next()
+                                    builder.setParameter(key, item.opt(key))
+                                }
+                            }
+                        }
+                        MobienceSDK.get().trackEvent(builder.build());
+                      //  Log.i("kamilll", "this is category: ${builder.build().toString()}")
+                    } catch (ex: JSONException) {
+                        ex.printStackTrace()
+                    }
+                }
             }
 
             else -> {
