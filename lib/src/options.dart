@@ -1,5 +1,6 @@
 import 'mobience_consts.dart';
 
+///Library init options.
 class MobienceOptions {
   String apiKey;
   String appIdentifier;
@@ -13,7 +14,7 @@ class MobienceOptions {
   bool iDsProfiles;
 
   MobienceOptions(this.apiKey,
-  {this.appIdentifier,
+      {this.appIdentifier,
       this.appInstallationSource,
       this.email,
       this.customUserAgent,
